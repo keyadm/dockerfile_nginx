@@ -15,6 +15,11 @@ RUN touch $NGINX_CONF_PATH/default.conf \
 
 COPY default.conf $NGINX_CONF_PATH/default.conf
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD ["/bin/bash" ,"-c" ,"/sbin/ifconfig -a && /sbin/service nginx start && /sbin/service nginx status"]
+#CMD ["/bin/bash" ,"-c" ,"/usr/sbin/service nginx start -g 'daemon off;'"]
+#COPY ["start.sh", "/root/start.sh"]
+#RUN chmod +x /root/start.sh
+#WORKDIR /root
+#ENTRYPOINT /root/start.sh
+CMD /usr/sbin/nginx -g "daemon off;"
