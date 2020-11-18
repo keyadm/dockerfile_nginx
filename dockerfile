@@ -10,10 +10,7 @@ RUN apt-get update \
 RUN apt-get install -y net-tools \
     nano
 
-RUN touch $NGINX_CONF_PATH/default.conf \
-    && chmod -R -f 755 $NGINX_CONF_PATH/default.conf
-
-COPY default.conf $NGINX_CONF_PATH/default.conf
+COPY default.conf $NGINX_CONF_PATH/default.conf && chmod -R -f 755 $NGINX_CONF_PATH/default.conf
 
 EXPOSE 8080
 
